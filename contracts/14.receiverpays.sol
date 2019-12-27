@@ -52,12 +52,12 @@ contract ReceiverPays {
     }
 
     function recoverSigner(bytes32 message, bytes memory sig)
-        public
+        internal
         pure
         returns (address)
     {
         (uint8 v, bytes32 r, bytes32 s) = splitSignature(sig);
-        v = v + 27;
+
         return ecrecover(message, v, r, s);
     }
 
